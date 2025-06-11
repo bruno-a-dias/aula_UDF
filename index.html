@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fundamentos da Web com JavaScript</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: #f8fafc;
+      color: #333;
+      padding: 20px;
+    }
+    .slide {
+      display: none;
+      animation: fade 0.5s ease-in-out;
+    }
+    .slide.active { display: block; }
+    @keyframes fade {
+      from {opacity: 0; transform: translateY(20px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+    pre {
+      background: #212529;
+      color: #f8f8f2;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      font-size: 1rem;
+      margin-bottom: 1rem;
+    }
+    .controls {
+      margin-top: 32px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container my-5">
+    <!-- TIMER -->
+    <div class="row justify-content-center mb-4">
+      <div class="col-lg-8">
+        <div id="timer" class="alert alert-info text-center fs-4 fw-bold" style="display:none;">
+          Tempo restante: <span id="timer-value">10:00</span>
+        </div>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+
+        <!-- SLIDES COM CAMPOS PARA IMAGENS -->
+        <div class="slide card shadow-lg p-4 active">
+          <img src="./slide1.png" class="card-img-top img-fluid mb-3" alt="Fundamentos da Web com JavaScript">
+          <h1 class="mb-3">Introdução</h1>
+          <p><strong>Professor:</strong> Bruno A. Dias</p>
+          <p><strong>Duração:</strong> 10 minutos</p>
+        </div>
+
+        <div class="slide card shadow-lg p-4">
+          <img src="./slide2.png" class="card-img-top img-fluid mb-3" alt="Objetivos da Aula">
+          <h2 class="mb-3">Objetivos da Aula</h2>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Entender como a programação interage com páginas web</li>
+            <li class="list-group-item">Manipular elementos da interface com JavaScript</li>
+            <li class="list-group-item">Utilizar armazenamento local no navegador</li>
+            <li class="list-group-item">Conhecer conceitos fundamentais de JavaScript</li>
+            <li class="list-group-item">Exercitar a lógica de programação com exemplos práticos</li>
+          </ul>
+        </div>
+
+        <div class="slide card shadow-lg p-4">
+          <div class="text-center mb-3">
+            <img src="./slide3.png" class="img-fluid rounded" alt="Logo JavaScript">
+          </div>
+          <h2 class="mb-3">O que é JavaScript?</h2>
+          <p>
+            JavaScript é uma linguagem de programação de alto nível, essencial para desenvolvimento web. 
+            Ela permite criar páginas interativas, dinâmicas e modernas, rodando diretamente no navegador do usuário.
+          </p>
+        </div>
+
+        <div class="slide card shadow-lg p-4">
+          <div class="text-center mb-3">
+            <img src="./slide4.png" class="img-fluid rounded" alt="HTML CSS JS">
+          </div>
+          <h2 class="mb-3">Como JavaScript funciona na Web?</h2>
+          <ul>
+            <li><strong>HTML:</strong> Estrutura a página</li>
+            <li><strong>CSS:</strong> Estiliza e define o visual</li>
+            <li><strong>JavaScript:</strong> Adiciona interatividade e lógica</li>
+          </ul>
+          <p>
+            Exemplo: Ao clicar em um botão, um texto pode ser alterado ou uma animação pode acontecer — tudo isso é feito com JavaScript.
+          </p>
+        </div>
+
+        <div class="slide card shadow-lg p-4">
+          <div class="text-center mb-3">
+            <img src="./slide5.png" class="img-fluid rounded" alt="Exemplo Olá Mundo">
+          </div>
+          <h2 class="mb-3">Primeiro Exemplo: Olá, mundo!</h2>
+          <pre><code>&lt;script>
+document.querySelector("h1").textContent = "Olá, mundo!";
+&lt;/script></code></pre>
+          <p>
+            Esse é o exemplo clássico para começar em qualquer linguagem de programação. Ele mostra como alterar o conteúdo de um elemento HTML usando JavaScript.
+          </p>
+          <p>No Console do browser, podemos testar alguns comandos:</p>
+          <b>
+          <p>console.log("Olá, Mundo!");</p>
+          <p>alert("Olá, Mundo!");</p>
+          <p>document.write("Olá, Mundo!");</p>
+        </b>
+        </div>
+
+        <div class="slide card shadow-lg p-4">
+          <div class="text-center mb-3">
+            <img src="./slide6.png" class="img-fluid rounded" alt="Variáveis e Tipos">
+          </div>
+          <h2 class="mb-3">Variáveis e Tipos de Dados</h2>
+          <ul>
+            <li><strong>Variáveis:</strong> Espaços para guardar valores (números, textos, etc.)</li>
+            <li><strong>Tipos básicos:</strong> number, string, boolean, array, object</li>
+            <li><strong>Exemplo:</strong></li>
+          </ul>
+          <pre><code>let nome = "Maria";
+let idade = 25;
+let aprovado = true;
+let notas = [8, 7, 9];
+let aluno = { nome: "Maria", idade: 25 };</code></pre>
+          <p>
+            JavaScript é uma linguagem de tipagem dinâmica: você não precisa declarar o tipo da variável, ele é definido automaticamente.
+          </p>
+        </div>
+
+        <div class="slide card shadow-lg p-4">
+          <div class="text-center mb-3">
+            <img src="./slide7.png" class="img-fluid rounded" alt="Controle de Fluxo">
+          </div>
+          <h2 class="mb-3">Estruturas de Controle</h2>
+          <p>
+            Permitem tomar decisões e repetir ações:
+          </p>
+          <ul>
+            <li><strong>if/else:</strong> Executa um bloco de código se uma condição for verdadeira</li>
+            <li><strong>for/while:</strong> Repete um bloco de código várias vezes</li>
+          </ul>
+          <pre><code>if (idade &gt;= 18) {
+  console.log("Maior de idade");
+} else {
+  console.log("Menor de idade");
+}
+
+for (let i = 0; i &lt; 5; i++) {
+  console.log(i);
+}</code></pre>
+          <p>
+            Essas estruturas são essenciais para lógica de programação e automação de tarefas.
+          </p>
+        </div>
+
+        <div class="slide card shadow-lg p-4">
+          <div class="text-center mb-3">
+            <img src="./slide8.png" class="img-fluid rounded" alt="Funções">
+          </div>
+          <h2 class="mb-3">Funções</h2>
+          <p>
+            Funções agrupam instruções para serem reutilizadas. Você pode passar valores (parâmetros) e receber resultados (retorno).
+          </p>
+          <pre><code>function somar(a, b) {
+  return a + b;
+}
+let resultado = somar(3, 5); // resultado = 8</code></pre>
+          <p>
+            Funções tornam o código mais organizado, facilitando manutenção e reutilização.
+          </p>
+        </div>
+
+        <div class="slide card shadow-lg p-4">
+          <img src="./slide9.png" class="card-img-top img-fluid mb-3" alt="DOM">
+          <h2 class="mb-3">Manipulação do DOM</h2>
+          <p>Permite acessar e modificar elementos HTML usando JavaScript:</p>
+          <pre><code>document.getElementById("meuBotao").innerText = "Clique aqui!";</code></pre>
+          <p>
+            O DOM (Document Object Model) representa a estrutura da página. Com JavaScript, você pode alterar textos, estilos, adicionar ou remover elementos e responder a eventos do usuário.
+          </p>
+        </div>
+
+        <div class="slide card shadow-lg p-4">
+          <div class="text-center mb-3">
+            <img src="./slide10.png" class="img-fluid rounded" alt="Interatividade">
+          </div>
+          <h2 class="mb-3">Exemplo: Interação com o DOM</h2>
+          <pre><code>&lt;button id="btn">Clique&lt;/button>
+&lt;p id="msg">&lt;/p>
+&lt;script>
+  document.getElementById("btn").onclick = function() {
+    document.getElementById("msg").innerText = "Você clicou!";
+  }
+&lt;/script></code></pre>
+          <p>
+            Ao clicar no botão, o texto do parágrafo é alterado. Esse é um exemplo clássico de interatividade com JavaScript.
+          </p>
+          <br>
+          <button id="btn">Clique</button>
+<p id="msg"></p>
+<script>
+  document.getElementById("btn").onclick = function() {
+    document.getElementById("msg").innerText = "Você clicou!";
+  }
+</script>
+        </div>
+
+        <div class="slide card shadow-lg p-4">
+          <img src="./slide11.png" class="card-img-top img-fluid mb-3" alt="Armazenamento Local">
+          <h2 class="mb-3">Armazenamento Local</h2>
+          <p>JavaScript pode guardar informações no navegador:</p>
+          <ul>
+            <li><strong>localStorage:</strong> Guarda dados mesmo após fechar o navegador</li>
+            <li><strong>cookies:</strong> Pequenos dados de sessão</li>
+          </ul>
+          <pre><code>localStorage.setItem("usuario", "Bruno");
+let nome = localStorage.getItem("usuario");
+console.log("Bem-vindo, " + nome);</code></pre>
+          <p>
+            Isso é útil para salvar preferências do usuário ou dados temporários.
+          </p>
+        </div>
+
+        <div class="slide card shadow-lg p-4">
+          <div class="text-center mb-3">
+            <img src="./slide12.png" class="img-fluid rounded" alt="Mini Projeto Saudação">
+          </div>
+          <h2 class="mb-3">Mini Projeto: Saudação Personalizada</h2>
+          <pre><code>&lt;input id="nome" placeholder="Seu nome">
+&lt;button onclick="salvar()">Salvar&lt;/button>
+&lt;p id="saudacao">&lt;/p>
+
+&lt;script>
+function salvar() {
+  let nome = document.getElementById("nome").value;
+  localStorage.setItem("nomeUsuario", nome);
+  document.getElementById("saudacao").innerText = "Olá, " + nome + "!";
+}
+&lt;/script></code></pre>
+          <p>
+            Experimente: digite seu nome, clique em "Salvar" e veja a saudação personalizada. O nome fica salvo no navegador!
+          </p>          
+        </div>
+
+        <div class="slide card shadow-lg p-4">
+          <img src="./slide13.png" class="card-img-top img-fluid mb-3" alt="Dicas de Estudo">
+          <h2 class="mb-3">Dicas para Aprender JavaScript</h2>
+          <ul>
+            <li>Pratique com pequenos projetos e exemplos do dia a dia</li>
+            <li>Participe de comunidades e fóruns (Stack Overflow, GitHub)</li>
+            <li>Busque cursos e tutoriais online</li>
+            <li>Leia a documentação oficial (MDN Web Docs)</li>
+            <li>Teste, erre e tente novamente: aprender programação é um processo contínuo.</li>
+          </ul>
+        </div>
+
+        <div class="slide card shadow-lg p-4">
+          <div class="text-center mb-3">
+            <img src="./slide13.png" class="img-fluid rounded" alt="Exercícios">
+          </div>
+          <h2 class="mb-3">Exercícios Sugeridos</h2>
+          <ul>
+            <li>Crie uma função que exiba uma mensagem de boas-vindas ao carregar a página</li>
+            <li>Desenvolva uma função que verifique se um número é par ou ímpar</li>
+            <li>Calcule a média de um array de números</li>
+            <li>Converta uma string para caixa alta</li>
+            <li>Conte a quantidade de vogais em uma palavra</li>
+            <li>Faça um contador de cliques em um botão</li>
+            <li>Crie um mini jogo de adivinhação de número</li>
+          </ul>
+          <p>
+            Praticar com desafios simples é uma das melhores formas de consolidar seu aprendizado em JavaScript.
+          </p>
+        </div>
+
+        <div class="slide card shadow-lg p-4">
+          <img src="./slide14.png" class="card-img-top img-fluid mb-3" alt="Conclusão">
+          <h2 class="mb-3">Conclusão</h2>
+          <ul>
+            <li>JavaScript deixa páginas web interativas e dinâmicas</li>
+            <li>O DOM permite manipular a interface</li>
+            <li>localStorage e cookies melhoram a experiência do usuário</li>
+            <li>Praticar é fundamental para dominar a linguagem</li>
+          </ul>
+        </div>
+
+        <div class="slide card shadow-lg p-4">
+          <div class="text-center mb-3">
+            <img src="slide15.png" class="img-fluid rounded" alt="Encerramento">
+          </div>
+          <h2 class="mb-3">Encerramento</h2>
+          <p>Obrigado pela atenção! 💡</p>
+          <p><strong>Email:</strong> prof.mestre.84@gmail.com</p>
+          <p><strong>GitHub / LinkedIn:</strong> Bruno Assunção Dias</p>
+        </div>
+
+        <!-- CONTROLES DE NAVEGAÇÃO -->
+        <div class="controls d-flex justify-content-between">
+          <button id="prev" class="btn btn-secondary">Anterior</button>
+          <button id="next" class="btn btn-primary">Próximo</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // CONTROLE DOS SLIDES
+    const slides = document.querySelectorAll('.slide');
+    let current = 0;
+
+    function showSlide(index) {
+      slides.forEach((slide, i) => {
+        slide.classList.toggle('active', i === index);
+      });
+      document.getElementById('prev').disabled = index === 0;
+      document.getElementById('next').disabled = index === slides.length - 1;
+    }
+
+    document.getElementById('prev').addEventListener('click', () => {
+      if (current > 0) current--;
+      showSlide(current);
+    });
+
+    // TIMER REGRESSIVO DE 10 MINUTOS
+    let timerInterval;
+    let timerStarted = false;
+    const totalSeconds = 10 * 60; // 10 minutos em segundos
+    let secondsLeft = totalSeconds;
+
+    function startTimer() {
+      document.getElementById('timer').style.display = 'block';
+      updateTimerDisplay();
+      timerInterval = setInterval(() => {
+        secondsLeft--;
+        updateTimerDisplay();
+        if (secondsLeft <= 0) {
+          clearInterval(timerInterval);
+          document.getElementById('timer-value').innerText = "Tempo esgotado!";
+          document.getElementById('next').disabled = true;
+          document.getElementById('prev').disabled = true;
+        }
+      }, 1000);
+    }
+
+    function updateTimerDisplay() {
+      let min = Math.floor(secondsLeft / 60);
+      let sec = secondsLeft % 60;
+      document.getElementById('timer-value').innerText =
+        `${min.toString().padStart(2, '0')}:${sec.toString().padStart(2, '0')}`;
+    }
+
+    document.getElementById('next').addEventListener('click', () => {
+      if (current < slides.length - 1) current++;
+      showSlide(current);
+      if (!timerStarted && current === 1) {
+        timerStarted = true;
+        startTimer();
+      }
+    });
+
+    showSlide(current);
+  </script>
+</body>
+</html>

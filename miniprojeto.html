@@ -1,0 +1,11 @@
+<br>
+<input id="nome" placeholder="Seu nome">
+<button onclick="salvar()">Salvar</button>
+  <p id="saudacao"></p>
+  <script>
+      function salvar() {
+          let nome = document.getElementById("nome").value;
+          localStorage.setItem("nomeUsuario", nome);
+          document.getElementById("saudacao").innerText = "Olá, " + nome + "!";
+      }
+  </script>
